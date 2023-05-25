@@ -14,10 +14,11 @@ class DatabaseSeeder extends Seeder
         //     PermissionRoleTableSeeder::class,
         //     UsersTableSeeder::class,
         //     RoleUserTableSeeder::class,
+        //     VarietasTableSeeder::class,
         // ]);
 
-        // \App\Models\Category::factory(5)->create();
-        \App\Models\Post::factory(1)->create();
+        \App\Models\Category::factory(5)->create();
+        \App\Models\Post::factory(50)->create();
         // \App\Models\V2Kelompoktani::factory(10)->create();
         // \App\Models\V2PoktanMember::factory(20)->create();
     }

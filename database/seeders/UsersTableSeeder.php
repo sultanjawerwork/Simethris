@@ -28,6 +28,17 @@ class UsersTableSeeder extends Seeder
                 'username'       => 'user1',
                 'roleaccess'     => 2,
             ],
+            // [
+            //     'id'             => 3,
+            //     'name'           => 'Andi Muhammad Idil Fitri, SE, MM',
+            //     'email'          => 'pejabat@user.com',
+            //     'password'       => bcrypt('password'),
+            //     'remember_token' => null,
+            //     'username'       => 'DirSto2023',
+            //     'roleaccess'     => 1,
+            //     'jabatan'       => 'Direktur Sayuran dan Tanaman Obat',
+            //     'nip'           => '196912111997031003',
+            // ],
         ];
 
         User::insert($users);

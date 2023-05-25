@@ -135,6 +135,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 		Route::delete('pksmd', 'PksController@massDestroy')->name('pks.massDestroy');
 
 		Route::resource('skl', 'SklController');
+		Route::get('skl/recomendations', 'SklController@recomendations')->name('skl.recomendations');
+		Route::get('skl/recomendations/{id}/show', 'SklController@showrecom')->name('skl.recomendations.show');
+		Route::get('skl/recomendations/{id}/update', 'SklController@updaterecom')->name('skl.recomendations.update');
+		Route::get('skl/publishes', 'SklController@publishes')->name('skl.publishes');
+		Route::get('skl/published/{id}/show', 'SklController@published')->name('skl.published');
 
 		//berkas
 		Route::get('berkas', 'BerkasController@indexberkas')->name('berkas');

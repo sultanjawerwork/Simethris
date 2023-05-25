@@ -51,7 +51,6 @@
 
 
 		<ul id="js-nav-menu" class="nav-menu">
-
 			{{-- landing / beranda --}}
 			@can('landing_access')
 				<li class="c-sidebar-nav-item {{ request()->is('admin') ? 'active' : '' }}">
@@ -89,7 +88,7 @@
 							</li>
 						</ul>
 					</li>
-				@elseif (Auth::user()->roles[0]->title == 'Admin')
+				@elseif (Auth::user()->roles[0]->title == 'Admin' || Auth::user()->roles[0]->title == 'Pejabat')
 					<li class="{{ request()->is('admin/dashboard*') ? 'active open' : '' }} ">
 						<a href="#" title="Dashboard" data-filter-tags="dashboard pemantauan kinerja">
 							<i class="fal fa-analytics"></i>
@@ -139,6 +138,8 @@
 							</li>
 						</ul>
 					</li>
+				@elseif (Auth::user()->roles[0]->title == 'Pejabat')
+					
 				@endif
 			@endcan
 
@@ -268,6 +269,28 @@
 					</ul>
 				</li>
 			@endcan
+
+			{{-- direktur task --}}
+			@if (Auth::user()->roles[0]->title == 'Pejabat')
+			<li class="nav-title" data-i18n="nav.administation">Direktur Menu</li>
+			<li class="c-sidebar-nav-item {{ request()->is('admin/task/skl/recomendations')
+				|| request()->is('admin/task/skl/recomendations/*') ? 'active' : '' }}">
+				<a href="{{ route('admin.task.skl.recomendations') }}"
+					data-filter-tags="daftar rekomendasi penerbitan skl"
+					title="Daftar Rekomendasi Penerbitan SKL">
+					<i class="fa-fw fal fa-file-signature c-sidebar-nav-icon"></i>
+					Permohonan SKL
+				</a>
+			</li>
+			<li class="c-sidebar-nav-item {{ request()->is('admin/task/skl/publish*') ? 'active' : '' }}">
+				<a href="{{ route('admin.task.skl.publishes') }}"
+					data-filter-tags="daftar skl diterbitkan"
+					title="Daftar SKL yang telah diterbitkan">
+					<i class="fa-fw fal fa-file-certificate c-sidebar-nav-icon"></i>
+					SKL Diterbitkan
+				</a>
+			</li>
+			@endif
 
 			{{-- user task --}}
 			@can('user_task_access')
@@ -438,7 +461,6 @@
 				@endcan
 			@endcan
 
-			
 
 			{{-- pengelolaan berkas --}}
 			@can('folder_access')
